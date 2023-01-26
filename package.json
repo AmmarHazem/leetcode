@@ -1,0 +1,22 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "binarySearch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmmarHazem/leetcode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmmarHazem/leetcode/issues"
+  },
+  "homepage": "https://github.com/AmmarHazem/leetcode#readme",
+  "dependencies": {
+    "axios": "^1.2.3"
+  }
+}
