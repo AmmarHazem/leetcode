@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/AmmarHazem/leetcode#readme",
   "dependencies": {
+    "@skavinvarnan/cryptlib": "^1.0.3",
     "axios": "^1.2.3"
   }
 }
