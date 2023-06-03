@@ -1,39 +1,47 @@
 const graph = new Map();
-graph.set("A", [
-  { name: "B", weight: 6 },
-  { name: "D", weight: 1 },
-]);
+graph.set("S", [{ name: "A", weight: 10 }]);
+graph.set("A", [{ name: "B", weight: 20 }]);
 graph.set("B", [
-  { name: "A", weight: 6 },
-  { name: "D", weight: 2 },
-  { name: "E", weight: 2 },
-  { name: "C", weight: 5 },
+  { name: "F", weight: 30 },
+  { name: "C", weight: 1 },
 ]);
-graph.set("E", [
-  { name: "C", weight: 5 },
-  { name: "B", weight: 2 },
-  { name: "D", weight: 1 },
-]);
-graph.set("D", [
-  { name: "A", weight: 1 },
-  { name: "B", weight: 2 },
-  { name: "E", weight: 1 },
-]);
-graph.set("C", [
-  { name: "B", weight: 5 },
-  { name: "E", weight: 5 },
-]);
+graph.set("C", [{ name: "A", weight: 1 }]);
+graph.set("F", []);
+// graph.set("A", [
+//   { name: "B", weight: 6 },
+//   { name: "D", weight: 1 },
+// ]);
+// graph.set("B", [
+//   { name: "A", weight: 6 },
+//   { name: "D", weight: 2 },
+//   { name: "E", weight: 2 },
+//   { name: "C", weight: 5 },
+// ]);
+// graph.set("E", [
+//   { name: "C", weight: 5 },
+//   { name: "B", weight: 2 },
+//   { name: "D", weight: 1 },
+// ]);
+// graph.set("D", [
+//   { name: "A", weight: 1 },
+//   { name: "B", weight: 2 },
+//   { name: "E", weight: 1 },
+// ]);
+// graph.set("C", [
+//   { name: "B", weight: 5 },
+//   { name: "E", weight: 5 },
+// ]);
 
 function dijkstra(start, end) {
   const distanceTable = new Map();
-  const visitedVertices = new Map();
+  //   const visitedVertices = new Map();
   const unvisitedVertices = new Map();
-  for (const vertix of Array.from(graph.keys())) {
-    unvisitedVertices.set(vertix, true);
-    if (vertix === start) {
-      distanceTable.set(vertix, { name: vertix, shortestDistanceFromStart: 0, previousVertix: null });
+  for (const vertixName of Array.from(graph.keys())) {
+    unvisitedVertices.set(vertixName, true);
+    if (vertixName === start) {
+      distanceTable.set(vertixName, { name: vertixName, shortestDistanceFromStart: 0, previousVertix: null });
     } else {
-      distanceTable.set(vertix, { name: vertix, shortestDistanceFromStart: Infinity, previousVertix: null });
+      distanceTable.set(vertixName, { name: vertixName, shortestDistanceFromStart: Infinity, previousVertix: null });
     }
   }
   let currentVertix = distanceTable.get(start);
@@ -62,7 +70,7 @@ function dijkstra(start, end) {
       }
     }
     unvisitedVertices.delete(currentVertix.name);
-    visitedVertices.set(currentVertix.name, true);
+    // visitedVertices.set(currentVertix.name, true);
     currentVertix = nextVertixToVisit;
   }
   const path = [];
@@ -72,8 +80,9 @@ function dijkstra(start, end) {
     endVertixFromDistanceTable = distanceTable.get(endVertixFromDistanceTable.previousVertix);
   }
   path.push(start);
-  console.log("Path:", path.reverse());
+  console.log("Path:", path.reverse().join(" => "));
+  console.log("Cost:", distanceTable.get(end).shortestDistanceFromStart);
   return distanceTable;
 }
 
-dijkstra("A", "C");
+dijkstra("S", "F");
