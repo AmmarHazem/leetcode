@@ -2,7 +2,7 @@ const readXlsxFile = require("read-excel-file/node");
 const fs = require("fs");
 
 async function readExcelToFile() {
-  const rows = await readXlsxFile("./tests.xlsx", { sheet: 1 });
+  const rows = await readXlsxFile("./build-your-lab-test.xlsx", { sheet: 1 });
   const jsonData = rows.map((row) => {
     return {
       "Test Name": row[1],
@@ -11,7 +11,7 @@ async function readExcelToFile() {
       FASTING: row[4],
     };
   });
-  fs.writeFile("./tests.json", JSON.stringify(jsonData), "utf-8", (e) => {
+  fs.writeFile("./build-your-lab-test.json", JSON.stringify(jsonData), "utf-8", (e) => {
     if (e) {
       return console.log("--- write json error");
     }
