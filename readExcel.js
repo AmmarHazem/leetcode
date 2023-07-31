@@ -2,16 +2,14 @@ const readXlsxFile = require("read-excel-file/node");
 const fs = require("fs");
 
 async function readExcelToFile() {
-  const rows = await readXlsxFile("./build-your-lab-test.xlsx", { sheet: 1 });
-  const jsonData = rows.map((row) => {
+  const rows = await readXlsxFile("./lab-tests.xlsx", { sheet: 1 });
+  const jsonData = rows.slice(4).map((row) => {
     return {
       "Test Name": row[1],
       "Partner Price Cost Price": row[2],
-      "TAT Hours": row[3],
-      FASTING: row[4],
     };
   });
-  fs.writeFile("./build-your-lab-test.json", JSON.stringify(jsonData), "utf-8", (e) => {
+  fs.writeFile("./lab-tests.json", JSON.stringify(jsonData), "utf-8", (e) => {
     if (e) {
       return console.log("--- write json error");
     }
