@@ -19,6 +19,7 @@
   "dependencies": {
     "@skavinvarnan/cryptlib": "^1.0.3",
     "axios": "^1.2.3",
+    "exceljs": "^4.3.0",
     "moment": "^2.29.4",
     "read-excel-file": "^5.6.1"
   }
